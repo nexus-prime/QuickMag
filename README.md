@@ -41,7 +41,7 @@ Note that spaces need to be preserved, for example 'i7-6700' will return a mix o
 __________________________________________________________________________________________________________________
 
 
-bash CPU_QuickMag.sh [GPUid] [#hosts] [output]
+bash GPU_QuickMag.sh [GPUid] [#hosts] [output]
 
     [GPUid]		:	GPU id string e.g. 'GTX 1080Ti|1' (check GPUlist.data for more examples)
     
