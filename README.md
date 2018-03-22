@@ -10,7 +10,7 @@ Steps for running code:
 Script details:
 
 __________________________________________________________________________________________________________________
-bash UpdateDatabaseFiles.sh [Project Type] [debug]
+**bash UpdateDatabaseFiles.sh [Project Type] [debug]**
     
     [Project Type]	:	Choose which project types to get data for (cpu/gpu/all)
     [debug]		:	Can specify debug to enable progress bars
