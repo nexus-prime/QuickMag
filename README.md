@@ -6,6 +6,12 @@ Steps for running code:
     bash UpdateDatabaseFiles.sh cpu
     
     bash CPU_QuickMag.sh [CPUid] [#hosts] [output]
+    
+or 
+    
+    bash UpdateDatabaseFiles.sh gpu
+    
+    bash GPU_QuickMag.sh [GPUid] [#hosts] [output]
  
 Script details:
 
