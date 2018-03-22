@@ -55,7 +55,8 @@ ________________________________________________________________________________
     
     [output]	:	save output to file name (optional)
     
-GPU_QuickMag.sh reads the host and team data files to find the magnitude of the top [#hosts] hosts using a single card of the specified GPU model.
+GPU_QuickMag.sh reads the host and team data files to find the magnitude of the top [#hosts] hosts using a single card 
+of the specified GPU model.
 The data can be saved to a specified output file or printed to the terminal if [output] is not specified.
 __________________________________________________________________________________________________________________
 
@@ -65,7 +66,8 @@ File contains the names of common GPU models formatted to work with GPU_QuickMag
 For example 'GTX 1080Ti|1' or 'RX 580|1'
 
 Dual GPU cards need to be followed by a 2 (since BOINC detects each GPU die as a separate GPU).
-e.g. 'TESLA K80|2'. Due to the rarity of these cards, it is usually better to search for the single die version of the card and double the score.
+e.g. 'TESLA K80|2'. Due to the rarity of these cards, it is usually better to search for the single die version 
+of the card and double the score.
 __________________________________________________________________________________________________________________
 
 **Project name abbreviations:**
