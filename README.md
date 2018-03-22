@@ -21,7 +21,7 @@ and saves the needed data to the local computer.
 __________________________________________________________________________________________________________________
 
 
-bash CPU_QuickMag.sh [CPUid] [#hosts] [output]
+**bash CPU_QuickMag.sh [CPUid] [#hosts] [output]**
 
     [CPUid]		:	CPU id string e.g. 'i7-6700 ' (check CPUlist.data for more examples)
     
@@ -33,7 +33,7 @@ CPU_QuickMag.sh reads the host and team data files to find the magnitude of the 
 The data can be saved to a specified output file or printed to the terminal if [output] is not specified.
 __________________________________________________________________________________________________________________
 
-CPUlist.data
+**CPUlist.data**
 
 File contains the names of common CPU models formatted to work with CPU_QuickMag.sh
 Note that spaces need to be preserved, for example 'i7-6700' will return a mix of 'i7-6700 ' and 'i7-6700K'
@@ -41,7 +41,7 @@ Note that spaces need to be preserved, for example 'i7-6700' will return a mix o
 __________________________________________________________________________________________________________________
 
 
-bash GPU_QuickMag.sh [GPUid] [#hosts] [output]
+**bash GPU_QuickMag.sh [GPUid] [#hosts] [output]**
 
     [GPUid]		:	GPU id string e.g. 'GTX 1080Ti|1' (check GPUlist.data for more examples)
     
@@ -53,7 +53,7 @@ GPU_QuickMag.sh reads the host and team data files to find the magnitude of the 
 The data can be saved to a specified output file or printed to the terminal if [output] is not specified.
 __________________________________________________________________________________________________________________
 
-GPUlist.data
+**GPUlist.data**
 
 File contains the names of common GPU models formatted to work with GPU_QuickMag.sh
 For example 'GTX 1080Ti|1' or 'RX 580|1'
@@ -62,7 +62,7 @@ Dual GPU cards need to be followed by a 2 (since BOINC detects each GPU die as a
 e.g. 'TESLA K80|2'. Due to the rarity of these cards, it is usually better to search for the single die version of the card and double the score.
 __________________________________________________________________________________________________________________
 
-Project name abbreviations:
+**Project name abbreviations:**
 
 	CPU Projects:
 
