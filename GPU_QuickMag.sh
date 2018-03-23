@@ -8,7 +8,7 @@
 #
 # bash GPU_QuickMag.sh [GPUid] [#hosts] [output]
 # 
-# [GPUid]	:	GPU id string e.g. 'GTX 1080 Ti|1' (check GPUlist.data for more examples)
+# [GPUid]	:	GPU id string e.g. 'GTX 1080 Ti|1|' (check GPUlist.data for more examples)
 # [#hosts]	:	number of hosts to return data for
 # [output]	:	save output to file name (optional)
 #
@@ -25,7 +25,7 @@ if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
 #
 # bash GPU_QuickMag.sh [GPUid] [#hosts] [output]
 # 
-# [GPUid]	:	GPU id string e.g. 'GTX 1080 Ti|1' (check GPUlist.data for more examples)
+# [GPUid]	:	GPU id string e.g. 'GTX 1080 Ti|1|' (check GPUlist.data for more examples)
 # [#hosts]	:	number of hosts to return data for
 # [output]	:	save output to file name (optional)
 #
