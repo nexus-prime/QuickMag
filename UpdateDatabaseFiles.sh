@@ -40,7 +40,7 @@ fi
  fi
  
  
- if [ $# -gt 2 ]; then
+ if [ $# -eq 2 ]; then
  
 	 if [ $2 == "-debug" ] || [ $2 == "debug" ] || [ $2 == "-v" ]; then
 		PB='--show-progress'
