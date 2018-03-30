@@ -1,4 +1,4 @@
-CPU_QuickMag is a method for determining the approximate performance of a given CPU on all Gridcoin whitelisted projects.
+CPU_QuickMag and GPU_QuickMag are methods for determining the approximate performance of a given CPU/GPU on all Gridcoin whitelisted projects.
 Requires: python
 
 **Steps for running code:**
