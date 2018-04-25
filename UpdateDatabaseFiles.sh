@@ -70,9 +70,7 @@ fi
 	exit 2
  fi
  
-# Clear Old Files 
-rm -f ./HostFiles/*hosts
-rm -f ./TeamFiles/*team
+
  
 # Setup for downloading
 rm -f fin.temp
@@ -85,6 +83,45 @@ if [ -z "$PB" ];then
 fi
 # Download CPU projects
 if [ $ProjType == "all" ] || [ $ProjType == "cpu" ]; then
+
+# Clear Old Files 
+rm -f ./HostFiles/tODLK1hosts
+rm -f ./HostFiles/tSRBASEhosts
+rm -f ./HostFiles/tYAFUhosts
+rm -f ./HostFiles/tTNGRIDhosts
+rm -f ./HostFiles/tVGTUhosts
+rm -f ./HostFiles/tDDhosts
+rm -f ./HostFiles/tNFShosts
+rm -f ./HostFiles/tNUMFhosts
+rm -f ./HostFiles/tPOGShosts
+rm -f ./HostFiles/tUNIVERSEhosts
+rm -f ./HostFiles/tCSGhosts
+rm -f ./HostFiles/tCOSMOLOGYhosts
+rm -f ./HostFiles/tLHChosts
+rm -f ./HostFiles/tASTEROIDShosts
+rm -f ./HostFiles/tROSETTAhosts
+rm -f ./HostFiles/tYOYOhosts
+rm -f ./HostFiles/tWCGhosts
+
+rm -f ./TeamFiles/ODLK1team
+rm -f ./TeamFiles/SRBASEteam
+rm -f ./TeamFiles/YAFUteam
+rm -f ./TeamFiles/TNGRIDteam
+rm -f ./TeamFiles/VGTUteam
+rm -f ./TeamFiles/DDteam
+rm -f ./TeamFiles/NFSteam
+rm -f ./TeamFiles/POGSteam
+rm -f ./TeamFiles/UNIVERSEteam
+rm -f ./TeamFiles/CSGteam
+rm -f ./TeamFiles/COSMOLOGYteam
+rm -f ./TeamFiles/LHCteam
+rm -f ./TeamFiles/ASTEROIDSteam
+rm -f ./TeamFiles/ROSETTAteam
+rm -f ./TeamFiles/YOYOteam
+rm -f ./TeamFiles/WCGteam
+
+
+# Download New Files
 
 (wget https://boinc.multi-pool.info/latinsquares/stats/host.gz -t 4 $PB -q -O ODLK1hosts.gz && gunzip -f  ODLK1hosts.gz && tac ODLK1hosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/tODLK1hosts && rm ODLK1hosts ; echo " " >>fin.temp )&
 sleep 1
@@ -144,6 +181,29 @@ fi
 
 # Download GPU projects
 if [ $ProjType == "all" ] || [ $ProjType == "gpu" ]; then
+
+# Clear Old Files 
+rm -f ./HostFiles/tAMICABLEhosts
+rm -f ./HostFiles/tCOLLATZhosts
+rm -f ./HostFiles/tEINSTEINhosts
+rm -f ./HostFiles/tENIGMAhosts
+rm -f ./HostFiles/tGPUGhosts
+rm -f ./HostFiles/tMWhosts
+rm -f ./HostFiles/tPGRIDhosts
+rm -f ./HostFiles/tSETIhosts
+
+
+rm -f ./TeamFiles/AMICABLEteam
+rm -f ./TeamFiles/COLLATZteam
+rm -f ./TeamFiles/EINSTEINteam
+rm -f ./TeamFiles/ENIGMAteam
+rm -f ./TeamFiles/GPUGteam
+rm -f ./TeamFiles/MWteam
+rm -f ./TeamFiles/PGRIDteam
+rm -f ./TeamFiles/SETIteam
+
+
+# Download New Files
 
 (wget https://sech.me/boinc/Amicable/stats/host.gz -t 4 $PB -q -O AMICABLEhosts.gz && gunzip -f  AMICABLEhosts.gz && tac AMICABLEhosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/tAMICABLEhosts && rm AMICABLEhosts ; echo " " >>fin.temp )&
 (wget https://sech.me/boinc/Amicable/stats/team.gz -t 4 $PB -q -O ./TeamFiles/AMICABLEteam.gz && gunzip -f  ./TeamFiles/AMICABLEteam.gz  )&
