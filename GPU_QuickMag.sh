@@ -15,7 +15,7 @@
 # Requires: python
 # 
 # @author nexus-prime
-# @version 1.0.0
+# @version 1.0.2
 
 # Check for help flag
 if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
@@ -70,23 +70,23 @@ nVidSearch=$( echo $GPUid | grep -E "(GT|Quadro|NVS|TITAN|GeForce|Tesla)" )
 
 if [ -n "$nVidSearch" ]; then
 	
-	amicable=$(cat ./HostFiles/tAMICABLEhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	collatz=$(cat ./HostFiles/tCOLLATZhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	enigma=$(cat ./HostFiles/tENIGMAhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	pgrid=$(cat ./HostFiles/tPGRIDhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	einstein=$(cat ./HostFiles/tEINSTEINhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	milkyway=$(cat ./HostFiles/tMWhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n  $iters) 
-	seti=$(cat ./HostFiles/tSETIhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	gpug=$(cat ./HostFiles/tGPUGhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	amicable=$(cat ./HostFiles/GtAMICABLEhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	collatz=$(cat ./HostFiles/GtCOLLATZhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	enigma=$(cat ./HostFiles/GtENIGMAhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	pgrid=$(cat ./HostFiles/GtPGRIDhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	einstein=$(cat ./HostFiles/GtEINSTEINhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	milkyway=$(cat ./HostFiles/GtMWhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n  $iters) 
+	seti=$(cat ./HostFiles/GtSETIhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	gpug=$(cat ./HostFiles/GtGPUGhosts | grep -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
 else
 	
-	amicable=$(cat ./HostFiles/tAMICABLEhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	collatz=$(cat ./HostFiles/tCOLLATZhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	enigma=$(cat ./HostFiles/tENIGMAhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	pgrid=$(cat ./HostFiles/tPGRIDhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	einstein=$(cat ./HostFiles/tEINSTEINhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
-	milkyway=$(cat ./HostFiles/tMWhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n  $iters) 
-	seti=$(cat ./HostFiles/tSETIhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	amicable=$(cat ./HostFiles/GtAMICABLEhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	collatz=$(cat ./HostFiles/GtCOLLATZhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	enigma=$(cat ./HostFiles/GtENIGMAhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	pgrid=$(cat ./HostFiles/GtPGRIDhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	einstein=$(cat ./HostFiles/GtEINSTEINhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	milkyway=$(cat ./HostFiles/GtMWhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n  $iters) 
+	seti=$(cat ./HostFiles/GtSETIhosts | grep -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
 	eval gpug='$(for i in {1..'$iters'}; do echo -n '"'"'0 '"'"'; done)'
 fi
 

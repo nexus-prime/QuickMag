@@ -15,7 +15,7 @@
 # Requires: python and math package
 # 
 # @author nexus-prime
-# @version 1.0.1
+# @version 1.0.2
 
 # Check for help flag
 if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
@@ -58,29 +58,29 @@ fi
 NumWL=$(wget -q -O- https://www.gridcoinstats.eu/project/ | grep 'Included Projects:' | grep -Eo "[0-9]+")
 
 #Declare projects and indexing
-declare -a iterationSF=( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16" ) #( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16" )
-ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu DD numf nfs pogs universe csg cosmology lhc asteroids rosetta  yoyo wcg )
-
+declare -a iterationSF=( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" ) #( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16" )
+#ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu DD numf nfs pogs universe csg cosmology lhc asteroids rosetta  yoyo wcg )
+ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu numf nfs pogs universe csg cosmology lhc asteroids rosetta  yoyo wcg )
 
 
 ## Get Top Rac for CPU model
-odlk1=$(cat ./HostFiles/tODLK1hosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-srbase=$(cat ./HostFiles/tSRBASEhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-yafu=$(cat ./HostFiles/tYAFUhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-tngrid=$(cat ./HostFiles/tTNGRIDhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-vgtu=$(cat ./HostFiles/tVGTUhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-DD=$(cat ./HostFiles/tDDhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-numf=$(cat ./HostFiles/tNUMFhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-nfs=$(cat ./HostFiles/tNFShosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-pogs=$(cat ./HostFiles/tPOGShosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-universe=$(cat ./HostFiles/tUNIVERSEhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-csg=$(cat ./HostFiles/tCSGhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-cosmology=$(cat ./HostFiles/tCOSMOLOGYhosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-lhc=$(cat ./HostFiles/tLHChosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-asteroids=$(cat ./HostFiles/tASTEROIDShosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-rosetta=$(cat ./HostFiles/tROSETTAhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-yoyo=$(cat ./HostFiles/tYOYOhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-wcg=$(cat ./HostFiles/tWCGhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+odlk1=$(cat ./HostFiles/CtODLK1hosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+srbase=$(cat ./HostFiles/CtSRBASEhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+yafu=$(cat ./HostFiles/CtYAFUhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+tngrid=$(cat ./HostFiles/CtTNGRIDhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+vgtu=$(cat ./HostFiles/CtVGTUhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+#DD=$(cat ./HostFiles/CtDDhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) # Removed from Whitelist
+numf=$(cat ./HostFiles/CtNUMFhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+nfs=$(cat ./HostFiles/CtNFShosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+pogs=$(cat ./HostFiles/CtPOGShosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+universe=$(cat ./HostFiles/CtUNIVERSEhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+csg=$(cat ./HostFiles/CtCSGhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+cosmology=$(cat ./HostFiles/CtCOSMOLOGYhosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+lhc=$(cat ./HostFiles/CtLHChosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+asteroids=$(cat ./HostFiles/CtASTEROIDShosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+rosetta=$(cat ./HostFiles/CtROSETTAhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+yoyo=$(cat ./HostFiles/CtYOYOhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+wcg=$(cat ./HostFiles/CtWCGhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
 
 
 #Check for missing data
@@ -104,7 +104,7 @@ srbase=($srbase)
 yafu=($yafu)
 tngrid=($tngrid)
 vgtu=($vgtu)
-DD=($DD)
+#DD=($DD) # Removed from Whitelist
 numf=($numf)
 nfs=($nfs)
 pogs=($pogs)
@@ -124,7 +124,7 @@ TMsrbase="$(cat ./TeamFiles/SRBASEteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<"
 TMyafu="$(cat ./TeamFiles/YAFUteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMtngrid="$(cat ./TeamFiles/TNGRIDteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMvgtu="$(cat ./TeamFiles/VGTUteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
-TMDD="$(cat ./TeamFiles/DDteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
+#TMDD="$(cat ./TeamFiles/DDteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")" # Removed from Whitelist
 TMnumf="$(cat ./TeamFiles/NUMFteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMnfs="$(cat ./TeamFiles/NFSteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMpogs="$(cat ./TeamFiles/POGSteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
