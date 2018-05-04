@@ -56,7 +56,7 @@ fi
  if [ "$ProjType" == "all" ]; then
 	TotProj=25
  elif [ "$ProjType" == "cpu" ]; then
-	TotProj=17
+	TotProj=16
 	echo "Skipping gpu projects"
  elif [ "$ProjType" == "gpu" ]; then
 	TotProj=8
