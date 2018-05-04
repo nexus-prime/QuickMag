@@ -54,7 +54,7 @@ fi
  mkdir -p HostFiles
  
  if [ "$ProjType" == "all" ]; then
-	TotProj=25
+	TotProj=24
  elif [ "$ProjType" == "cpu" ]; then
 	TotProj=16
 	echo "Skipping gpu projects"
@@ -62,7 +62,7 @@ fi
 	TotProj=8
 	echo "Skipping cpu projects"
  elif [ "$ProjType" == "-debug" ] || [ "$ProjType" == "debug" ]|| [ $2 == "-v" ]; then
-	TotProj=25
+	TotProj=24
 	PB='--show-progress'	
 	ProjType=all
  else
