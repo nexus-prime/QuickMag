@@ -84,13 +84,9 @@ ________________________________________________________________________________
 
 		vgtu 		Vgtu Project@home
 
-		DD 		Drugdiscovery@home
-
 		numf 		Numberfields@home
 		
 		nfs 		Nfs@home
-
-		pogs 		Theskynet Pogs
 
 		universe 	Universe@home
 
@@ -106,7 +102,7 @@ ________________________________________________________________________________
 
 		yoyo 		Yoyo@home
 
-		wcg		World Community Grid
+		wcg		World Community Grid  (Temporarily removed due to GDPR issues)
 	
 	GPU Projects:
 		

@@ -58,10 +58,9 @@ fi
 NumWL=$(wget -q -O- https://www.gridcoinstats.eu/project/ | grep 'Included Projects:' | grep -Eo "[0-9]+")
 
 #Declare projects and indexing
-declare -a iterationSF=( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" ) #( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16" )
+declare -a iterationSF=( "0 1 2 3 4 5 6 7 8 9 10 11 12 13" ) #( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16" )
 #ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu DD numf nfs pogs universe csg cosmology lhc asteroids rosetta  yoyo wcg )
-ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu numf nfs pogs universe csg cosmology lhc asteroids rosetta  yoyo wcg )
-
+ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu numf nfs universe csg cosmology lhc asteroids rosetta  yoyo )
 
 ## Get Top Rac for CPU model
 odlk1=$(cat ./HostFiles/CtODLK1hosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
@@ -72,7 +71,6 @@ vgtu=$(cat ./HostFiles/CtVGTUhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expa
 #DD=$(cat ./HostFiles/CtDDhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) # Removed from Whitelist
 numf=$(cat ./HostFiles/CtNUMFhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
 nfs=$(cat ./HostFiles/CtNFShosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-pogs=$(cat ./HostFiles/CtPOGShosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
 universe=$(cat ./HostFiles/CtUNIVERSEhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
 csg=$(cat ./HostFiles/CtCSGhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
 cosmology=$(cat ./HostFiles/CtCOSMOLOGYhosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
@@ -80,7 +78,7 @@ lhc=$(cat ./HostFiles/CtLHChosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_
 asteroids=$(cat ./HostFiles/CtASTEROIDShosts 2>/dev/null |grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
 rosetta=$(cat ./HostFiles/CtROSETTAhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
 yoyo=$(cat ./HostFiles/CtYOYOhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
-wcg=$(cat ./HostFiles/CtWCGhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters ) 
+#wcg=$(cat ./HostFiles/CtWCGhosts 2>/dev/null | grep -A 4 "$CPUid"|  grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters )  # Temporary Issues with GDPR compliance
 
 
 #Check for missing data
@@ -127,7 +125,6 @@ TMvgtu="$(cat ./TeamFiles/VGTUteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | g
 #TMDD="$(cat ./TeamFiles/DDteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")" # Removed from Whitelist
 TMnumf="$(cat ./TeamFiles/NUMFteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMnfs="$(cat ./TeamFiles/NFSteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
-TMpogs="$(cat ./TeamFiles/POGSteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMuniverse="$(cat ./TeamFiles/UNIVERSEteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMcsg="$(cat ./TeamFiles/CSGteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMcosmology="$(cat ./TeamFiles/COSMOLOGYteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
@@ -135,7 +132,7 @@ TMlhc="$(cat ./TeamFiles/LHCteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | gre
 TMasteroids="$(cat ./TeamFiles/ASTEROIDSteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMrosetta="$(cat ./TeamFiles/ROSETTAteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMyoyo="$(cat ./TeamFiles/YOYOteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
-TMwcg="$(cat ./TeamFiles/WCGteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
+#TMwcg="$(cat ./TeamFiles/WCGteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"  # Temporary Issues with GDPR compliance
 
 
 # Check for missing data
@@ -154,7 +151,8 @@ unset project
 
 
 # Convert team RAC into a list
-TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMvgtu $TMDD $TMnumf $TMnfs $TMpogs $TMuniverse $TMcsg $TMcosmology $TMlhc $TMasteroids $TMrosetta $TMyoyo $TMwcg" )
+#TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMvgtu $TMDD $TMnumf $TMnfs $TMpogs $TMuniverse $TMcsg $TMcosmology $TMlhc $TMasteroids $TMrosetta $TMyoyo $TMwcg" )
+TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMvgtu $TMDD $TMnumf $TMnfs $TMuniverse $TMcsg $TMcosmology $TMlhc $TMasteroids $TMrosetta $TMyoyo" )
 TeamRac=($TeamRac)
 
 

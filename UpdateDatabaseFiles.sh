@@ -54,15 +54,15 @@ fi
  mkdir -p HostFiles
  
  if [ "$ProjType" == "all" ]; then
-	TotProj=24
+	TotProj=22
  elif [ "$ProjType" == "cpu" ]; then
-	TotProj=16
+	TotProj=14
 	echo "Skipping gpu projects"
  elif [ "$ProjType" == "gpu" ]; then
 	TotProj=8
 	echo "Skipping cpu projects"
  elif [ "$ProjType" == "-debug" ] || [ "$ProjType" == "debug" ]|| [ $2 == "-v" ]; then
-	TotProj=24
+	TotProj=22
 	PB='--show-progress'	
 	ProjType=all
  else
@@ -90,10 +90,10 @@ rm -f ./HostFiles/tSRBASEhosts
 rm -f ./HostFiles/tYAFUhosts
 rm -f ./HostFiles/tTNGRIDhosts
 rm -f ./HostFiles/tVGTUhosts
-rm -f ./HostFiles/tDDhosts
+rm -f ./HostFiles/tDDhosts			# No Longer on Whitelist
 rm -f ./HostFiles/tNFShosts
 rm -f ./HostFiles/tNUMFhosts
-rm -f ./HostFiles/tPOGShosts
+rm -f ./HostFiles/tPOGShosts		# Project has ended
 rm -f ./HostFiles/tUNIVERSEhosts
 rm -f ./HostFiles/tCSGhosts
 rm -f ./HostFiles/tCOSMOLOGYhosts
@@ -108,9 +108,9 @@ rm -f ./TeamFiles/SRBASEteam
 rm -f ./TeamFiles/YAFUteam
 rm -f ./TeamFiles/TNGRIDteam
 rm -f ./TeamFiles/VGTUteam
-rm -f ./TeamFiles/DDteam
+rm -f ./TeamFiles/DDteam			# No Longer on Whitelist
 rm -f ./TeamFiles/NFSteam
-rm -f ./TeamFiles/POGSteam
+rm -f ./TeamFiles/POGSteam			# Project has ended
 rm -f ./TeamFiles/UNIVERSEteam
 rm -f ./TeamFiles/CSGteam
 rm -f ./TeamFiles/COSMOLOGYteam
@@ -149,9 +149,6 @@ sleep 10
 (wget https://numberfields.asu.edu/NumberFields/stats/host.gz -t 4 $PB -q -O NUMFhosts.gz && gunzip -f  NUMFhosts.gz  && tac NUMFhosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/CtNUMFhosts && rm NUMFhosts ; echo " " >>fin.temp )&
 (wget https://numberfields.asu.edu/NumberFields/stats/team.gz -t 4 $PB -q -O ./TeamFiles/NUMFteam.gz && gunzip -f  ./TeamFiles/NUMFteam.gz  )&
 
-(wget http://pogs.theskynet.org/pogs/stats/host.gz -t 4 $PB -q -O POGShosts.gz && gunzip -f  POGShosts.gz  && tac POGShosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/CtPOGShosts && rm POGShosts ; echo " " >>fin.temp )&
-(wget http://pogs.theskynet.org/pogs/stats/team.gz -t 4 $PB -q -O ./TeamFiles/POGSteam.gz && gunzip -f  ./TeamFiles/POGSteam.gz )& 
-
 (wget https://universeathome.pl/universe/stats/host.gz -t 4 $PB -q -O UNIVERSEhosts.gz && gunzip -f  UNIVERSEhosts.gz  && tac UNIVERSEhosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/CtUNIVERSEhosts && rm UNIVERSEhosts ; echo " " >>fin.temp )&
 (wget https://universeathome.pl/universe/stats/team.gz -t 4 $PB -q -O ./TeamFiles/UNIVERSEteam.gz && gunzip -f  ./TeamFiles/UNIVERSEteam.gz  )&
 
@@ -173,8 +170,9 @@ sleep 10
 (wget http://www.rechenkraft.net/yoyo/stats/host.gz -t 4 $PB -q -O YOYOhosts.gz && gunzip -f  YOYOhosts.gz && tac YOYOhosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/CtYOYOhosts && rm YOYOhosts ; echo " " >>fin.temp )&
 (wget http://www.rechenkraft.net/yoyo/stats/team.gz -t 4 $PB -q -O ./TeamFiles/YOYOteam.gz && gunzip -f  ./TeamFiles/YOYOteam.gz )&
 
-(wget https://download.worldcommunitygrid.org/boinc/stats/host.gz -t 4 $PB -q -O WCGhosts.gz && gunzip -f WCGhosts.gz && tac WCGhosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/CtWCGhosts && rm WCGhosts ; echo " " >>fin.temp )&
-(wget https://download.worldcommunitygrid.org/boinc/stats/team.gz -t 4 $PB -q -O ./TeamFiles/WCGteam.gz && gunzip -f ./TeamFiles/WCGteam.gz  )&
+# Temporarily unable to download stats
+#(wget https://download.worldcommunitygrid.org/boinc/stats/host.gz -t 4 $PB -q -O WCGhosts.gz && gunzip -f WCGhosts.gz && tac WCGhosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/CtWCGhosts && rm WCGhosts ; echo " " >>fin.temp )&
+#(wget https://download.worldcommunitygrid.org/boinc/stats/team.gz -t 4 $PB -q -O ./TeamFiles/WCGteam.gz && gunzip -f ./TeamFiles/WCGteam.gz  )&
 
 else
 	:
