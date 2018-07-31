@@ -102,7 +102,7 @@ ________________________________________________________________________________
 
 		yoyo 		Yoyo@home
 
-		wcg		World Community Grid  (Temporarily removed due to GDPR issues)
+		wcg		World Community Grid 
 	
 	GPU Projects:
 		
@@ -114,7 +114,7 @@ ________________________________________________________________________________
 		
 		pgrid 		Primegrid
 		
-		einstein 	Einstein@home
+		einstein 	Einstein@home  (GDPR issues)
 		
 		milkyway 	Milkyway@home
 		
