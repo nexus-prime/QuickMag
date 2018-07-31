@@ -171,8 +171,8 @@ sleep 10
 (wget http://www.rechenkraft.net/yoyo/stats/team.gz -t 4 $PB -q -O ./TeamFiles/YOYOteam.gz && gunzip -f  ./TeamFiles/YOYOteam.gz )&
 
 # Temporarily unable to download stats
-#(wget https://download.worldcommunitygrid.org/boinc/stats/host.gz -t 4 $PB -q -O WCGhosts.gz && gunzip -f WCGhosts.gz && tac WCGhosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/CtWCGhosts && rm WCGhosts ; echo " " >>fin.temp )&
-#(wget https://download.worldcommunitygrid.org/boinc/stats/team.gz -t 4 $PB -q -O ./TeamFiles/WCGteam.gz && gunzip -f ./TeamFiles/WCGteam.gz  )&
+(wget https://download.worldcommunitygrid.org/boinc/stats/host.gz -t 4 $PB -q -O WCGhosts.gz && gunzip -f WCGhosts.gz && tac WCGhosts | grep -vE "(n_bwdown|n_bwup|d_free|vbox_version|boinc_version|d_total|m_swap|m_cache|m_nbytes|turnaround|rpc_time|p_vendor|timezone|credit_per_cpu_sec|p_membw|p_iops|p_fpops|expavg_time|os_version|os_name|host_cpid|<host>|total_credit)"> ./HostFiles/CtWCGhosts && rm WCGhosts ; echo " " >>fin.temp )&
+(wget https://download.worldcommunitygrid.org/boinc/stats/team.gz -t 4 $PB -q -O ./TeamFiles/WCGteam.gz && gunzip -f ./TeamFiles/WCGteam.gz  )&
 
 else
 	:
