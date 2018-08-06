@@ -60,8 +60,8 @@ touch $StatsOut
 NumWL=$(wget -q -O- https://www.gridcoinstats.eu/project/ | grep 'Included Projects:' | grep -Eo "[0-9]+")
 
 #Declare projects and indexing
-declare -a iterationSF=( "0 1 2 3 4 5 6 7" )
-ProjWithStandForm=( amicable collatz enigma pgrid einstein milkyway seti gpug )
+declare -a iterationSF=( "0 1 2 3 4 5 6 7 8" )
+ProjWithStandForm=( amicable collatz enigma pgrid einstein milkyway seti gpug asteroids )
 
 
 
@@ -80,6 +80,7 @@ if [ -n "$nVidSearch" ]; then
 	milkyway=$(cat $mypath/HostFiles/GtMWhosts | grep -i -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -i -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n  $iters) 
 	seti=$(cat $mypath/HostFiles/GtSETIhosts | grep -i -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -i -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
 	gpug=$(cat $mypath/HostFiles/GtGPUGhosts | grep -i -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -i -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
+	asteroids=$(cat $mypath/HostFiles/GtASTEROIDShosts 2>/dev/null | grep -i -A 4 "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}'| grep -i -A 4 "$GPUid"  | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
 else
 	
 	amicable=$(cat $mypath/HostFiles/GtAMICABLEhosts | grep -i -A 4 "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}'| grep -i -A 4 "$GPUid" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters) 
@@ -117,7 +118,7 @@ einstein=($einstein)
 milkyway=($milkyway)
 seti=($seti)
 gpug=($gpug)
-
+asteroids=($asteroids)
 
 
 # Find gridcoin team RAC
@@ -129,6 +130,7 @@ TMeinstein="$(cat $mypath/TeamFiles/EINSTEINteam | grep -B 4 -A 3 ">Gridcoin<" |
 TMmilkyway="$(cat $mypath/TeamFiles/MWteam | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMseti="$(cat $mypath/TeamFiles/SETIteam | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 TMgpug="$(cat $mypath/TeamFiles/GPUGteam | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
+TMasteroids="$(cat $mypath/TeamFiles/ASTEROIDSteam 2>/dev/null | grep -B 4 -A 3 ">Gridcoin<" | grep "expavg_credit"|grep -Eo "[0-9]+\.[0-9]+")"
 
 
 # Check for missing data
@@ -147,7 +149,7 @@ unset project
 
 
 # Convert team RAC into a list
-TeamRac=( "$TMamicable $TMcollatz $TMenigma $TMpgrid $TMeinstein $TMmilkyway $TMseti $TMgpug" )
+TeamRac=( "$TMamicable $TMcollatz $TMenigma $TMpgrid $TMeinstein $TMmilkyway $TMseti $TMgpug $TMasteroids" )
 TeamRac=($TeamRac)
 
 

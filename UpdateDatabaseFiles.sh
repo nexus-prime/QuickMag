@@ -56,10 +56,10 @@ fi
  if [ "$ProjType" == "all" ]; then
 	TotProj=22
  elif [ "$ProjType" == "cpu" ]; then
-	TotProj=14
+	TotProj=13
 	echo "Skipping gpu projects"
  elif [ "$ProjType" == "gpu" ]; then
-	TotProj=8
+	TotProj=9
 	echo "Skipping cpu projects"
  elif [ "$ProjType" == "-debug" ] || [ "$ProjType" == "debug" ]|| [ $2 == "-v" ]; then
 	TotProj=22
@@ -85,23 +85,22 @@ fi
 if [ $ProjType == "all" ] || [ $ProjType == "cpu" ]; then
 
 # Clear Old Files 
-rm -f ./HostFiles/tODLK1hosts
-rm -f ./HostFiles/tSRBASEhosts
-rm -f ./HostFiles/tYAFUhosts
-rm -f ./HostFiles/tTNGRIDhosts
-rm -f ./HostFiles/tVGTUhosts
-rm -f ./HostFiles/tDDhosts			# No Longer on Whitelist
-rm -f ./HostFiles/tNFShosts
-rm -f ./HostFiles/tNUMFhosts
-rm -f ./HostFiles/tPOGShosts		# Project has ended
-rm -f ./HostFiles/tUNIVERSEhosts
-rm -f ./HostFiles/tCSGhosts
-rm -f ./HostFiles/tCOSMOLOGYhosts
-rm -f ./HostFiles/tLHChosts
-rm -f ./HostFiles/tASTEROIDShosts
-rm -f ./HostFiles/tROSETTAhosts
-rm -f ./HostFiles/tYOYOhosts
-rm -f ./HostFiles/tWCGhosts
+rm -f ./HostFiles/CtODLK1hosts
+rm -f ./HostFiles/CtSRBASEhosts
+rm -f ./HostFiles/CtYAFUhosts
+rm -f ./HostFiles/CtTNGRIDhosts
+rm -f ./HostFiles/CtVGTUhosts
+rm -f ./HostFiles/CtDDhosts			# No Longer on Whitelist
+rm -f ./HostFiles/CtNFShosts
+rm -f ./HostFiles/CtNUMFhosts
+rm -f ./HostFiles/CtPOGShosts		# Project has ended
+rm -f ./HostFiles/CtUNIVERSEhosts
+rm -f ./HostFiles/CtCSGhosts
+rm -f ./HostFiles/CtCOSMOLOGYhosts
+rm -f ./HostFiles/CtLHChosts
+rm -f ./HostFiles/CtROSETTAhosts
+rm -f ./HostFiles/CtYOYOhosts
+rm -f ./HostFiles/CtWCGhosts
 
 rm -f ./TeamFiles/ODLK1team
 rm -f ./TeamFiles/SRBASEteam
@@ -115,7 +114,6 @@ rm -f ./TeamFiles/UNIVERSEteam
 rm -f ./TeamFiles/CSGteam
 rm -f ./TeamFiles/COSMOLOGYteam
 rm -f ./TeamFiles/LHCteam
-rm -f ./TeamFiles/ASTEROIDSteam
 rm -f ./TeamFiles/ROSETTAteam
 rm -f ./TeamFiles/YOYOteam
 rm -f ./TeamFiles/WCGteam
@@ -161,9 +159,6 @@ sleep 10
 (wget https://lhcathome.cern.ch/lhcathome/stats/host.gz -t 4 $PB -q -O LHChosts.gz && gunzip -f  LHChosts.gz  && tac LHChosts | grep -E "(host|ncpus|coprocs|p_model|expavg_credit|userid|id)"> ./HostFiles/CtLHChosts && rm LHChosts ; echo " " >>fin.temp )&
 (wget https://lhcathome.cern.ch/lhcathome/stats/team.gz -t 4 $PB -q -O ./TeamFiles/LHCteam.gz && gunzip -f  ./TeamFiles/LHCteam.gz  )&
 
-(wget http://asteroidsathome.net/boinc/stats/host.gz -t 4 $PB -q -O ASTEROIDShosts.gz && gunzip -f  ASTEROIDShosts.gz   && tac ASTEROIDShosts | grep -E "(host|ncpus|coprocs|p_model|expavg_credit|userid|id)"> ./HostFiles/CtASTEROIDShosts && rm ASTEROIDShosts ; echo " " >>fin.temp )&
-(wget http://asteroidsathome.net/boinc/stats/team.gz -t 4 $PB -q -O ./TeamFiles/ASTEROIDSteam.gz && gunzip -f  ./TeamFiles/ASTEROIDSteam.gz )& 
-
 (wget http://boinc.bakerlab.org/rosetta/stats/host.gz -t 4 $PB -q -O ROSETTAhosts.gz && gunzip -f  ROSETTAhosts.gz && tac ROSETTAhosts | grep -E "(host|ncpus|coprocs|p_model|expavg_credit|userid|id)"> ./HostFiles/CtROSETTAhosts && rm ROSETTAhosts ; echo " " >>fin.temp )&
 (wget http://boinc.bakerlab.org/rosetta/stats/team.gz -t 4 $PB -q -O ./TeamFiles/ROSETTAteam.gz && gunzip -f  ./TeamFiles/ROSETTAteam.gz  )&
 
@@ -182,15 +177,15 @@ fi
 if [ $ProjType == "all" ] || [ $ProjType == "gpu" ]; then
 
 # Clear Old Files 
-rm -f ./HostFiles/tAMICABLEhosts
-rm -f ./HostFiles/tCOLLATZhosts
-rm -f ./HostFiles/tEINSTEINhosts
-rm -f ./HostFiles/tENIGMAhosts
-rm -f ./HostFiles/tGPUGhosts
-rm -f ./HostFiles/tMWhosts
-rm -f ./HostFiles/tPGRIDhosts
-rm -f ./HostFiles/tSETIhosts
-
+rm -f ./HostFiles/GtAMICABLEhosts
+rm -f ./HostFiles/GtCOLLATZhosts
+rm -f ./HostFiles/GtEINSTEINhosts
+rm -f ./HostFiles/GtENIGMAhosts
+rm -f ./HostFiles/GtGPUGhosts
+rm -f ./HostFiles/GtMWhosts
+rm -f ./HostFiles/GtPGRIDhosts
+rm -f ./HostFiles/GtSETIhosts
+rm -f ./HostFiles/GtASTEROIDShosts
 
 rm -f ./TeamFiles/AMICABLEteam
 rm -f ./TeamFiles/COLLATZteam
@@ -200,7 +195,7 @@ rm -f ./TeamFiles/GPUGteam
 rm -f ./TeamFiles/MWteam
 rm -f ./TeamFiles/PGRIDteam
 rm -f ./TeamFiles/SETIteam
-
+rm -f ./TeamFiles/ASTEROIDSteam
 
 # Download New Files
 
@@ -229,6 +224,8 @@ rm -f ./TeamFiles/SETIteam
 sleep 10
 (wget http://setiathome.ssl.berkeley.edu/stats/host.gz -t 4 $PB -q -O SETIhosts.gz  && gunzip -f  SETIhosts.gz && tac SETIhosts | grep -E "(host|ncpus|coprocs|p_model|expavg_credit|userid|id)"> ./HostFiles/GtSETIhosts && rm SETIhosts ; echo " " >>fin.temp )&
 
+(wget http://asteroidsathome.net/boinc/stats/host.gz -t 4 $PB -q -O ASTEROIDShosts.gz && gunzip -f  ASTEROIDShosts.gz   && tac ASTEROIDShosts | grep -E "(host|ncpus|coprocs|p_model|expavg_credit|userid|id)"> ./HostFiles/GtASTEROIDShosts && rm ASTEROIDShosts ; echo " " >>fin.temp )&
+(wget http://asteroidsathome.net/boinc/stats/team.gz -t 4 $PB -q -O ./TeamFiles/ASTEROIDSteam.gz && gunzip -f  ./TeamFiles/ASTEROIDSteam.gz )& 
 
 else
 	:
