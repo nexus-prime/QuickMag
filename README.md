@@ -98,8 +98,6 @@ ________________________________________________________________________________
 		cosmology 	Cosmology@home
 
 		lhc		Lhc@home Classic
-		
-		asteroids 	Asteroids@home
 
 		rosetta  	Rosetta@home
 
@@ -124,3 +122,6 @@ ________________________________________________________________________________
 		seti 		Seti@home
 		
 		gpug		GPUgrid
+		
+		asteroids 	Asteroids@home
+				
