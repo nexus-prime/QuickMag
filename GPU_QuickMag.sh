@@ -67,7 +67,7 @@ ProjWithStandForm=( amicable collatz enigma pgrid einstein milkyway seti gpug as
 
 ## Get Top Rac for GPU model
 
-nVidSearch=$( echo $GPUid | grep -iE "(GT|Quadro|NVS|TITAN|GeForce|Tesla)" )
+nVidSearch=$( echo $GPUid | grep -iE "(GT|Quadro|NVS|TITAN|GeForce|Tesla|RTX)" )
 
 
 if [ -n "$nVidSearch" ]; then
