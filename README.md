@@ -2,7 +2,7 @@ There is an [online version](http://grcquickmag.hopto.org) with limited features
 
 
 CPU_QuickMag and GPU_QuickMag are methods for determining the approximate performance of a given CPU/GPU on all Gridcoin whitelisted projects.
-Requires: python
+Requires: python. Optional: ripgrep (for faster execution)
 
 **Steps for running code:**
 
