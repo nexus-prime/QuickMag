@@ -10,7 +10,7 @@
 # [debug]			:	Can specify debug to enable progress bars
 #
 # @author nexus-prime
-# @version 1.6
+# @version 2.0
 
 # Respond to help flag
  if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
@@ -25,8 +25,6 @@
 #
 # [debug]			:	Can specify debug to enable progress bars
 #
-# @author nexusgroup
-# @version 1.4
  "
   exit 0
 fi
