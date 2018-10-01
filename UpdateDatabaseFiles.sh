@@ -53,15 +53,15 @@ set -o pipefail
  mkdir -p HostFiles
 
  if [ "$ProjType" == "all" ]; then
-	TotProj=22
+	TotProj=23
  elif [ "$ProjType" == "cpu" ]; then
-	TotProj=13
+	TotProj=14
 	echo "Skipping gpu projects"
  elif [ "$ProjType" == "gpu" ]; then
 	TotProj=9
 	echo "Skipping cpu projects"
  elif [ "$ProjType" == "-debug" ] || [ "$ProjType" == "debug" ]|| [ $2 == "-v" ]; then
-	TotProj=22
+	TotProj=23
 	PB='--show-progress'
 	ProjType=all
  else
@@ -107,6 +107,7 @@ rm -f ./HostFiles/CtLHChosts
 rm -f ./HostFiles/CtROSETTAhosts
 rm -f ./HostFiles/CtYOYOhosts
 rm -f ./HostFiles/CtWCGhosts
+rm -f ./HostFiles/CtDHEPhosts
 
 rm -f ./TeamFiles/ODLK1team
 rm -f ./TeamFiles/SRBASEteam
@@ -123,10 +124,12 @@ rm -f ./TeamFiles/LHCteam
 rm -f ./TeamFiles/ROSETTAteam
 rm -f ./TeamFiles/YOYOteam
 rm -f ./TeamFiles/WCGteam
+rm -f ./TeamFiles/DHEPteam
 
 # Download New Files
 (wget https://boinc.multi-pool.info/latinsquares/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/ODLK1team || echo "Could not download odlk1 teams" >&2 ) &
-#sleep 10
+wait #ODLK doesn't like simultaneous downloads
+sleep 1
 (wget https://boinc.multi-pool.info/latinsquares/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtODLK1hosts || echo "Could not download odlk1 hosts" >&2 ; echo " " >>fin.temp ) &
 
 
@@ -173,6 +176,10 @@ rm -f ./TeamFiles/WCGteam
 
 (wget https://download.worldcommunitygrid.org/boinc/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtWCGhosts || echo "Could not download wcg hosts" >&2 ; echo " " >>fin.temp ) &
 (wget https://download.worldcommunitygrid.org/boinc/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/WCGteam || echo "Could not download wcg teams" >&2 ) &
+
+(wget https://www.dhep.ga/boinc/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtDHEPhosts || echo "Could not download dhep hosts" >&2 ; echo " " >>fin.temp ) &
+(wget https://www.dhep.ga/boinc/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/DHEPteam || echo "Could not download dhep teams" >&2 ) &
+
 
 else
 	:

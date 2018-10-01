@@ -104,6 +104,8 @@ ________________________________________________________________________________
 		yoyo 		Yoyo@home
 
 		wcg		World Community Grid 
+		
+		dhep		Distributed Hardware Evolution Project
 	
 	GPU Projects:
 		
