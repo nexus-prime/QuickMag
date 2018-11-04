@@ -115,8 +115,6 @@ ________________________________________________________________________________
 		
 		enigma 		Enigma@home
 		
-		pgrid 		Primegrid
-		
 		einstein 	Einstein@home  (GDPR issues)
 		
 		milkyway 	Milkyway@home

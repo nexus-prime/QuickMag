@@ -10,7 +10,7 @@
 # [debug]			:	Can specify debug to enable progress bars
 #
 # @author nexus-prime
-# @version 2.0
+# @version 2.0.1
 
 # Respond to help flag
  if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
@@ -53,15 +53,15 @@ set -o pipefail
  mkdir -p HostFiles
 
  if [ "$ProjType" == "all" ]; then
-	TotProj=23
+	TotProj=22
  elif [ "$ProjType" == "cpu" ]; then
 	TotProj=14
 	echo "Skipping gpu projects"
  elif [ "$ProjType" == "gpu" ]; then
-	TotProj=9
+	TotProj=8
 	echo "Skipping cpu projects"
  elif [ "$ProjType" == "-debug" ] || [ "$ProjType" == "debug" ]|| [ $2 == "-v" ]; then
-	TotProj=23
+	TotProj=22
 	PB='--show-progress'
 	ProjType=all
  else
@@ -145,7 +145,7 @@ sleep 1
 (wget https://boinc.vgtu.lt/stats/host.gz  -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtVGTUhosts || echo "Could not download vgtu hosts" >&2 ; echo " " >>fin.temp ) &
 (wget https://boinc.vgtu.lt/stats/team.gz  -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/VGTUteam || echo "Could not download vgtu teams" >&2 ) &
 
-# No Longer on Whitelist
+# DrugDiscovery@home Blacklisted
 #(wget http://boinc.drugdiscoveryathome.com/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtDDhosts || echo "Could not download dd hosts" >&2 ; echo " " >>fin.temp ) &
 #(wget http://boinc.drugdiscoveryathome.com/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/DDteam.gz || echo "Could not download dd teams" >&2 ) &
 
@@ -229,8 +229,9 @@ rm -f ./TeamFiles/ASTEROIDSteam
 (wget http://milkyway.cs.rpi.edu/milkyway/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtMWhosts || echo "Could not download milkyway hosts" >&2 ; echo " " >>fin.temp ) &
 (wget http://milkyway.cs.rpi.edu/milkyway/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/MWteam || echo "Could not download milkyway teams" >&2 ) &
 
-(wget http://23.253.170.196/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtPGRIDhosts || echo "Could not download pgrid hosts" >&2 ; echo " " >>fin.temp ) &
-(wget http://23.253.170.196/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/PGRIDteam || echo "Could not download pgrid teams" >&2 ) &
+# PrimeGrid Blacklisted (04-11-2018)
+#(wget http://23.253.170.196/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtPGRIDhosts || echo "Could not download pgrid hosts" >&2 ; echo " " >>fin.temp ) &
+#(wget http://23.253.170.196/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/PGRIDteam || echo "Could not download pgrid teams" >&2 ) &
 
 (wget http://setiathome.ssl.berkeley.edu/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/SETIteam || echo "Could not download seti teams" >&2 ) &
 sleep 10
