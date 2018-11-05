@@ -1,3 +1,5 @@
+*This version of QuickMag is being depreciated! [GridcoinDeltaCalculator (AKA DeltaMag)](https://github.com/nexus-prime/GridcoinDeltaCalculator) is generally superior.*  
+
 There is an [online version](http://grcquickmag.hopto.org) with limited features
 
 
