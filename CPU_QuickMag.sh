@@ -73,16 +73,16 @@ touch $StatsOut
 NumWL=$(wget -q -O- https://www.gridcoinstats.eu/project/ | grep 'Included Projects:' | grep -Eo "[0-9]+")
 
 #Declare projects and indexing
-declare -a iterationSF=( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14" ) #( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17" )
+declare -a iterationSF=( "0 1 2 3 4 5 6 7 8 9 10 11 12 13" ) #( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17" )
 #ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu DD numf nfs pogs universe csg cosmology lhc asteroids rosetta  yoyo wcg dhep)
-ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu numf nfs universe csg cosmology lhc rosetta  yoyo wcg dhep)
+ProjWithStandForm=( odlk1 srbase yafu tngrid numf nfs universe csg cosmology lhc rosetta  yoyo wcg dhep)
 
 ## Get Top Rac for CPU model
 odlk1=$(cat $mypath/HostFiles/CtODLK1hosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
 srbase=$(cat $mypath/HostFiles/CtSRBASEhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
 yafu=$(cat $mypath/HostFiles/CtYAFUhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
 tngrid=$(cat $mypath/HostFiles/CtTNGRIDhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
-vgtu=$(cat $mypath/HostFiles/CtVGTUhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
+#vgtu=$(cat $mypath/HostFiles/CtVGTUhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
 #DD=$(cat $mypath/HostFiles/CtDDhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters ) # Removed from Whitelist
 numf=$(cat $mypath/HostFiles/CtNUMFhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
 nfs=$(cat $mypath/HostFiles/CtNFShosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
@@ -116,7 +116,7 @@ odlk1=($odlk1)
 srbase=($srbase)
 yafu=($yafu)
 tngrid=($tngrid)
-vgtu=($vgtu)
+#vgtu=($vgtu)
 #DD=($DD) # Removed from Whitelist
 numf=($numf)
 nfs=($nfs)
@@ -135,7 +135,7 @@ TModlk1="$(cat $mypath/TeamFiles/ODLK1team 2>/dev/null | grep -A 3 "<name>Gridco
 TMsrbase="$(cat $mypath/TeamFiles/SRBASEteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 TMyafu="$(cat $mypath/TeamFiles/YAFUteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 TMtngrid="$(cat $mypath/TeamFiles/TNGRIDteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
-TMvgtu="$(cat $mypath/TeamFiles/VGTUteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
+#TMvgtu="$(cat $mypath/TeamFiles/VGTUteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 #TMDD="$(cat $mypath/TeamFiles/DDteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")" # Removed from Whitelist
 TMnumf="$(cat $mypath/TeamFiles/NUMFteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 TMnfs="$(cat $mypath/TeamFiles/NFSteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
@@ -165,7 +165,7 @@ unset project
 
 # Convert team RAC into a list
 #TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMvgtu $TMDD $TMnumf $TMnfs $TMpogs $TMuniverse $TMcsg $TMcosmology $TMlhc $TMasteroids $TMrosetta $TMyoyo $TMwcg" )
-TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMvgtu $TMDD $TMnumf $TMnfs $TMuniverse $TMcsg $TMcosmology $TMlhc $TMrosetta $TMyoyo $TMwcg $TMdhep" )
+TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMDD $TMnumf $TMnfs $TMuniverse $TMcsg $TMcosmology $TMlhc $TMrosetta $TMyoyo $TMwcg $TMdhep" )
 TeamRac=($TeamRac)
 
 

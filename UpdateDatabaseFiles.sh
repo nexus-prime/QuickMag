@@ -142,8 +142,8 @@ sleep 1
 (wget http://gene.disi.unitn.it/test/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtTNGRIDhosts || echo "Could not download tngrid hosts" >&2 ; echo " " >>fin.temp ) &
 (wget http://gene.disi.unitn.it/test/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/TNGRIDteam || echo "Could not download tngrid teams" >&2 ) &
 
-(wget https://boinc.vgtu.lt/stats/host.gz  -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtVGTUhosts || echo "Could not download vgtu hosts" >&2 ; echo " " >>fin.temp ) &
-(wget https://boinc.vgtu.lt/stats/team.gz  -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/VGTUteam || echo "Could not download vgtu teams" >&2 ) &
+#(wget https://boinc.vgtu.lt/stats/host.gz  -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtVGTUhosts || echo "Could not download vgtu hosts" >&2 ; echo " " >>fin.temp ) &
+#(wget https://boinc.vgtu.lt/stats/team.gz  -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/VGTUteam || echo "Could not download vgtu teams" >&2 ) &
 
 # DrugDiscovery@home Blacklisted
 #(wget http://boinc.drugdiscoveryathome.com/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtDDhosts || echo "Could not download dd hosts" >&2 ; echo " " >>fin.temp ) &
@@ -217,8 +217,8 @@ rm -f ./TeamFiles/ASTEROIDSteam
 (wget http://boinc.thesonntags.com/collatz/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtCOLLATZhosts || echo "Could not download collatz hosts" >&2 ; echo " " >>fin.temp ) &
 (wget http://boinc.thesonntags.com/collatz/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/COLLATZteam || echo "Could not download Collatz teams" >&2 ) &
 
-(wget https://einsteinathome.org/stats/host_id.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtEINSTEINhosts || echo "Could not download einstein hosts" >&2 ; echo " " >>fin.temp ) &
-(wget https://einsteinathome.org/stats/team_id.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/EINSTEINteam || echo "Could not download Einstein teams" >&2 ) &
+#(wget https://einsteinathome.org/stats/host_id.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtEINSTEINhosts || echo "Could not download einstein hosts" >&2 ; echo " " >>fin.temp ) &
+#(wget https://einsteinathome.org/stats/team_id.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/EINSTEINteam || echo "Could not download Einstein teams" >&2 ) &
 
 (wget http://www.enigmaathome.net/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtENIGMAhosts || echo "Could not download enigma hosts" >&2 ; echo " " >>fin.temp ) &
 (wget http://www.enigmaathome.net/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/ENIGMAteam || echo "Could not download enigma teams" >&2 ) &
