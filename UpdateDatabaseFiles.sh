@@ -53,15 +53,15 @@ set -o pipefail
  mkdir -p HostFiles
 
  if [ "$ProjType" == "all" ]; then
-	TotProj=22
+	TotProj=20
  elif [ "$ProjType" == "cpu" ]; then
 	TotProj=14
 	echo "Skipping gpu projects"
  elif [ "$ProjType" == "gpu" ]; then
-	TotProj=8
+	TotProj=6
 	echo "Skipping cpu projects"
  elif [ "$ProjType" == "-debug" ] || [ "$ProjType" == "debug" ]|| [ $2 == "-v" ]; then
-	TotProj=22
+	TotProj=20
 	PB='--show-progress'
 	ProjType=all
  else
@@ -220,8 +220,8 @@ rm -f ./TeamFiles/ASTEROIDSteam
 #(wget https://einsteinathome.org/stats/host_id.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtEINSTEINhosts || echo "Could not download einstein hosts" >&2 ; echo " " >>fin.temp ) &
 #(wget https://einsteinathome.org/stats/team_id.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/EINSTEINteam || echo "Could not download Einstein teams" >&2 ) &
 
-(wget http://www.enigmaathome.net/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtENIGMAhosts || echo "Could not download enigma hosts" >&2 ; echo " " >>fin.temp ) &
-(wget http://www.enigmaathome.net/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/ENIGMAteam || echo "Could not download enigma teams" >&2 ) &
+#(wget http://www.enigmaathome.net/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtENIGMAhosts || echo "Could not download enigma hosts" >&2 ; echo " " >>fin.temp ) &
+#(wget http://www.enigmaathome.net/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/ENIGMAteam || echo "Could not download enigma teams" >&2 ) &
 
 (wget https://www.gpugrid.net/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<coprocs>|<expavg_credit>)" | $grepcmd -B 1 "<coprocs>" | $grepcmd -v "^--$" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/GtGPUGhosts || echo "Could not download gpug hosts" >&2 ; echo " " >>fin.temp ) &
 (wget https://www.gpugrid.net/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/GPUGteam || echo "Could not download gpug teams" >&2 ) &

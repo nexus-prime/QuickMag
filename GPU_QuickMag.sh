@@ -72,8 +72,8 @@ touch $StatsOut
 NumWL=$(wget -q -O- https://www.gridcoinstats.eu/project/ | grep 'Included Projects:' | grep -Eo "[0-9]+")
 
 #Declare projects and indexing
-declare -a iterationSF=( "0 1 2 3 4 5 6" )
-ProjWithStandForm=( amicable collatz enigma milkyway seti gpug asteroids )
+declare -a iterationSF=( "0 1 2 3 4 5" )
+ProjWithStandForm=( amicable collatz milkyway seti gpug asteroids )
 
 ## Get Top Rac for GPU model
 
@@ -83,7 +83,7 @@ if [ -n "$nVidSearch" ]; then
 
 	amicable=$(cat $mypath/HostFiles/GtAMICABLEhosts | $grepcmd -F "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
 	collatz=$(cat $mypath/HostFiles/GtCOLLATZhosts | $grepcmd -F "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
-	enigma=$(cat $mypath/HostFiles/GtENIGMAhosts | $grepcmd -F "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
+	#enigma=$(cat $mypath/HostFiles/GtENIGMAhosts | $grepcmd -F "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
 	#einstein=$(cat $mypath/HostFiles/GtEINSTEINhosts | $grepcmd -F "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
 	milkyway=$(cat $mypath/HostFiles/GtMWhosts | $grepcmd -F "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n  $iters)
 	seti=$(cat $mypath/HostFiles/GtSETIhosts | $grepcmd -F "$GPUid" | sed -n '/CUDA*CUDA/!p;: m;//{$!{n;b m};}'| sed -n '/CAL/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
@@ -93,7 +93,7 @@ else
 
 	amicable=$(cat $mypath/HostFiles/GtAMICABLEhosts | $grepcmd -F "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
 	collatz=$(cat $mypath/HostFiles/GtCOLLATZhosts | $grepcmd -F "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
-	enigma=$(cat $mypath/HostFiles/GtENIGMAhosts | $grepcmd -F "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
+	#enigma=$(cat $mypath/HostFiles/GtENIGMAhosts | $grepcmd -F "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
 	#einstein=$(cat $mypath/HostFiles/GtEINSTEINhosts | $grepcmd -F "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
 	milkyway=$(cat $mypath/HostFiles/GtMWhosts | $grepcmd -F "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n  $iters)
 	seti=$(cat $mypath/HostFiles/GtSETIhosts | $grepcmd -F "$GPUid" | sed -n '/CAL*CAL/!p;: m;//{$!{n;b m};}'| sed -n '/CUDA/!p;: m;//{$!{n;b m};}' | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+"| sort -rn | head -n $iters)
@@ -118,7 +118,7 @@ unset project
 # Parse string to bash list
 amicable=($amicable)
 collatz=($collatz)
-enigma=($enigma)
+#enigma=($enigma)
 #einstein=($einstein)
 milkyway=($milkyway)
 seti=($seti)
@@ -129,7 +129,7 @@ asteroids=($asteroids)
 # Find gridcoin team RAC
 TMamicable="$(cat $mypath/TeamFiles/AMICABLEteam | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 TMcollatz="$(cat $mypath/TeamFiles/COLLATZteam | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
-TMenigma="$(cat $mypath/TeamFiles/ENIGMAteam | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
+#TMenigma="$(cat $mypath/TeamFiles/ENIGMAteam | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 #TMeinstein="$(cat $mypath/TeamFiles/EINSTEINteam | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 TMmilkyway="$(cat $mypath/TeamFiles/MWteam | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 TMseti="$(cat $mypath/TeamFiles/SETIteam | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
@@ -152,7 +152,7 @@ unset project
 
 
 # Convert team RAC into a list
-TeamRac=( "$TMamicable $TMcollatz $TMenigma $TMmilkyway $TMseti $TMgpug $TMasteroids" )
+TeamRac=( "$TMamicable $TMcollatz $TMmilkyway $TMseti $TMgpug $TMasteroids" )
 TeamRac=($TeamRac)
 
 
