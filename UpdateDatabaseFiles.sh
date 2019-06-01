@@ -53,15 +53,15 @@ set -o pipefail
  mkdir -p HostFiles
 
  if [ "$ProjType" == "all" ]; then
-	TotProj=20
+	TotProj=19
  elif [ "$ProjType" == "cpu" ]; then
-	TotProj=14
+	TotProj=13
 	echo "Skipping gpu projects"
  elif [ "$ProjType" == "gpu" ]; then
 	TotProj=6
 	echo "Skipping cpu projects"
  elif [ "$ProjType" == "-debug" ] || [ "$ProjType" == "debug" ]|| [ $2 == "-v" ]; then
-	TotProj=20
+	TotProj=19
 	PB='--show-progress'
 	ProjType=all
  else
@@ -158,8 +158,8 @@ sleep 1
 (wget https://universeathome.pl/universe/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtUNIVERSEhosts || echo "Could not download universe hosts" >&2 ; echo " " >>fin.temp ) &
 (wget https://universeathome.pl/universe/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/UNIVERSEteam || echo "Could not download universe teams" >&2 ) &
 
-(wget https://csgrid.org/csg/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtCSGhosts || echo "Could not download csg hosts" >&2 ; echo " " >>fin.temp ) &
-(wget https://csgrid.org/csg/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/CSGteam || echo "Could not download csg teams" >&2 ) &
+#(wget https://csgrid.org/csg/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtCSGhosts || echo "Could not download csg hosts" >&2 ; echo " " >>fin.temp ) &
+#(wget https://csgrid.org/csg/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/CSGteam || echo "Could not download csg teams" >&2 ) &
 
 (wget https://cosmologyathome.org/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtCOSMOLOGYhosts || echo "Could not download cosmology hosts" >&2 ; echo " " >>fin.temp ) &
 (wget https://cosmologyathome.org/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/COSMOLOGYteam || echo "Could not download cosmology teams" >&2 ) &
