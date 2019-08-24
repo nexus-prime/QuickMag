@@ -15,7 +15,7 @@
 # Requires: python and math package
 #
 # @author nexus-prime
-# @version 1.1.1
+# @version 1.1.2
 
 # Check for help flag
 if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
@@ -73,9 +73,9 @@ touch $StatsOut
 NumWL=$(wget -q -O- https://www.gridcoinstats.eu/project/ | grep 'Included Projects:' | grep -Eo "[0-9]+")
 
 #Declare projects and indexing
-declare -a iterationSF=( "0 1 2 3 4 5 6 7 8 9 10 11 12" ) #( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17" )
+declare -a iterationSF=( "0 1 2 3 4 5 6 7 8 9 10 11" ) #( "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17" )
 #ProjWithStandForm=( odlk1 srbase yafu tngrid vgtu DD numf nfs pogs universe csg cosmology lhc asteroids rosetta  yoyo wcg dhep)
-ProjWithStandForm=( odlk1 srbase yafu tngrid numf nfs universe cosmology lhc rosetta  yoyo wcg dhep)
+ProjWithStandForm=( odlk1 srbase yafu tngrid numf nfs universe cosmology lhc rosetta  yoyo wcg )
 
 ## Get Top Rac for CPU model
 odlk1=$(cat $mypath/HostFiles/CtODLK1hosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
@@ -93,7 +93,7 @@ lhc=$(cat $mypath/HostFiles/CtLHChosts 2>/dev/null | $grepcmd -F "$CPUid" | awk 
 rosetta=$(cat $mypath/HostFiles/CtROSETTAhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
 yoyo=$(cat $mypath/HostFiles/CtYOYOhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )
 wcg=$(cat $mypath/HostFiles/CtWCGhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters ) # 
-dhep=$(cat $mypath/HostFiles/CtDHEPhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters ) 
+#dhep=$(cat $mypath/HostFiles/CtDHEPhosts 2>/dev/null | $grepcmd -F "$CPUid" | awk '{print $1}' | grep -Eo "[0-9]+\.[0-9]+" | sort -rn | head -n $iters )  #Project shutdown due to lack of funding
 
 
 #Check for missing data
@@ -128,7 +128,7 @@ lhc=($lhc)
 rosetta=($rosetta)
 yoyo=($yoyo)
 wcg=($wcg)
-dhep=($dhep)
+#dhep=($dhep)
 
 # Find gridcoin team RAC
 TModlk1="$(cat $mypath/TeamFiles/ODLK1team 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
@@ -146,7 +146,7 @@ TMlhc="$(cat $mypath/TeamFiles/LHCteam 2>/dev/null | grep -A 3 "<name>Gridcoin</
 TMrosetta="$(cat $mypath/TeamFiles/ROSETTAteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 TMyoyo="$(cat $mypath/TeamFiles/YOYOteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 TMwcg="$(cat $mypath/TeamFiles/WCGteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"  
-TMdhep="$(cat $mypath/TeamFiles/DHEPteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
+#TMdhep="$(cat $mypath/TeamFiles/DHEPteam 2>/dev/null | grep -A 3 "<name>Gridcoin</name>" | grep "<expavg_credit>"|grep -Eo "[0-9]+\.[0-9]+")"
 
 # Check for missing data
 for project in $iterationSF
@@ -165,7 +165,7 @@ unset project
 
 # Convert team RAC into a list
 #TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMvgtu $TMDD $TMnumf $TMnfs $TMpogs $TMuniverse $TMcsg $TMcosmology $TMlhc $TMasteroids $TMrosetta $TMyoyo $TMwcg" )
-TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMDD $TMnumf $TMnfs $TMuniverse $TMcosmology $TMlhc $TMrosetta $TMyoyo $TMwcg $TMdhep" )
+TeamRac=( "$TModlk1  $TMsrbase $TMyafu $TMtngrid $TMDD $TMnumf $TMnfs $TMuniverse $TMcosmology $TMlhc $TMrosetta $TMyoyo $TMwcg" )
 TeamRac=($TeamRac)
 
 

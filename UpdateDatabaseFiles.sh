@@ -10,7 +10,7 @@
 # [debug]			:	Can specify debug to enable progress bars
 #
 # @author nexus-prime
-# @version 2.0.1
+# @version 2.0.2
 
 # Respond to help flag
  if [ "$1" == "--help" ] || [ "$1" == "-h" ]; then
@@ -53,15 +53,15 @@ set -o pipefail
  mkdir -p HostFiles
 
  if [ "$ProjType" == "all" ]; then
-	TotProj=19
+	TotProj=18
  elif [ "$ProjType" == "cpu" ]; then
-	TotProj=13
+	TotProj=12
 	echo "Skipping gpu projects"
  elif [ "$ProjType" == "gpu" ]; then
 	TotProj=6
 	echo "Skipping cpu projects"
  elif [ "$ProjType" == "-debug" ] || [ "$ProjType" == "debug" ]|| [ $2 == "-v" ]; then
-	TotProj=19
+	TotProj=18
 	PB='--show-progress'
 	ProjType=all
  else
@@ -107,7 +107,7 @@ rm -f ./HostFiles/CtLHChosts
 rm -f ./HostFiles/CtROSETTAhosts
 rm -f ./HostFiles/CtYOYOhosts
 rm -f ./HostFiles/CtWCGhosts
-rm -f ./HostFiles/CtDHEPhosts
+rm -f ./HostFiles/CtDHEPhosts		#Project shutdown due to lack of funding
 
 rm -f ./TeamFiles/ODLK1team
 rm -f ./TeamFiles/SRBASEteam
@@ -177,9 +177,9 @@ sleep 1
 (wget https://download.worldcommunitygrid.org/boinc/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtWCGhosts || echo "Could not download wcg hosts" >&2 ; echo " " >>fin.temp ) &
 (wget https://download.worldcommunitygrid.org/boinc/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/WCGteam || echo "Could not download wcg teams" >&2 ) &
 
-(wget https://www.dhep.ga/boinc/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtDHEPhosts || echo "Could not download dhep hosts" >&2 ; echo " " >>fin.temp ) &
-(wget https://www.dhep.ga/boinc/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/DHEPteam || echo "Could not download dhep teams" >&2 ) &
-
+#Project shutdown due to lack of funding (24-8-2019)
+#(wget https://www.dhep.ga/boinc/stats/team.gz -t 4 $PB -q -O - -o /dev/null | gunzip > ./TeamFiles/DHEPteam || echo "Could not download dhep teams" >&2 ) &
+#(wget https://www.dhep.ga/boinc/stats/host.gz -t 4 $PB -q -O - -o /dev/null | gunzip | $grepcmde "(<p_model>|<expavg_credit>)" | sed 'N;s/\n/ /' | awk '{print toupper($0)}' > ./HostFiles/CtDHEPhosts || echo "Could not download dhep hosts" >&2 ; echo " " >>fin.temp ) &
 
 else
 	:
