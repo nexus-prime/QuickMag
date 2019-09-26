@@ -1,6 +1,6 @@
 *[GridcoinDeltaCalculator (AKA DeltaMag)](https://github.com/nexus-prime/GridcoinDeltaCalculator) will replace QuickMag in the future.*  
 
-There is an [online version](http://grcquickmag.hopto.org) with limited features
+There is an [online version](http://quickmag.tk) with limited features
 
 
 CPU_QuickMag and GPU_QuickMag are methods for determining the approximate performance of a given CPU/GPU on all Gridcoin whitelisted projects.
