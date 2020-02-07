@@ -87,8 +87,6 @@ ________________________________________________________________________________
 
 		tngrid 		Tn-grid
 
-		vgtu 		Vgtu Project@home
-
 		numf 		Numberfields@home
 		
 		nfs 		Nfs@home
@@ -107,7 +105,6 @@ ________________________________________________________________________________
 
 		wcg		World Community Grid 
 		
-		dhep		Distributed Hardware Evolution Project
 	
 	GPU Projects:
 		
@@ -115,9 +112,7 @@ ________________________________________________________________________________
 		
 		collatz 	Collatz Conjecture
 		
-		enigma 		Enigma@home
-		
-		einstein 	Einstein@home  (GDPR issues)
+		einstein 	Einstein@home  	(No stats available - GDPR)
 		
 		milkyway 	Milkyway@home
 		
