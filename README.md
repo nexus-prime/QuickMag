@@ -1,4 +1,4 @@
-*[GridcoinDeltaCalculator (AKA DeltaMag)](https://github.com/nexus-prime/GridcoinDeltaCalculator) will replace QuickMag in the future.*  
+
 
 There is an [online version](http://quickmag.ml) with limited features
 
