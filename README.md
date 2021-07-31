@@ -1,3 +1,8 @@
+**This code is now obsolte!** 
+
+**See QuickMag.jl for a working magnitude calculator: https://github.com/nexus-prime/QuickMag.jl**
+
+This code will remain here in case anyone needs examples for how to parse BOINC host.xml files using Bash.
 
 
 There is an [online version](http://quickmag.ml) with limited features
