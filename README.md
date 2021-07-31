@@ -1,4 +1,4 @@
-**This code is now obsolte!** 
+**This code is now obsolete!** 
 
 **See QuickMag.jl for a working magnitude calculator: https://github.com/nexus-prime/QuickMag.jl**
 
